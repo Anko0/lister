@@ -1,0 +1,5 @@
+lister/listapp/lister-messages/
+lister/lister/__pycache__/
+lister/listapp/__pycache__/
+lister/listapp/migrations/__pycache__/
+lister/listapp/templates/dump.rdb

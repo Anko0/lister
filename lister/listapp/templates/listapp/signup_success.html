@@ -1,0 +1,19 @@
+{% extends 'listapp/base.html' %}
+
+{% block title %}Lister - Sign Up{% endblock %}
+{% block content %}
+{% load static %}
+    <main>
+        <div class="main">
+            {% if user.is_authenticated %}
+                <div class="textof"><strong>You are authenticated yet!</strong></div>
+            {% else %}
+                <div class="headof">Registration</br></br></div>
+                <div>
+                    Your account was successfully created</br>
+                    Go to log in <a href="/accounts/login/"><strong>here</strong></a>
+                </div>
+            {% endif %}
+        </div>
+    </main>
+{% endblock %}

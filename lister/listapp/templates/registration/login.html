@@ -1,0 +1,30 @@
+{% extends 'listapp/base.html' %}
+
+{% block title %}Lister - Log In{% endblock %}
+{% block content %}
+{% load static %}
+{% load bootstrap4 %}
+    <main>
+        {% if user.is_authenticated %}
+            <div class="main">
+                <div class="textof"><strong>You are authenticated yet!</strong></div>
+            </div>
+        {% else %}
+            <div class="container">
+                <div class="center_big">
+                    <div class="headof"></br>Log In</br></br></div>
+                    <div class="input_form form-group">
+                        <form method="post" action="{% url 'login' %}">{% csrf_token %} {% bootstrap_form form size='small' %}
+                            <button type="submit" class="btn btn-success btn-sm account_button"><small>LOG IN</small></button>
+                        </form>
+                    </div>
+                    </br></br>
+                    <p>Forgot password?&nbsp;&nbsp;
+                    <a href="{% url 'reset_password' %}"><button type="button" class="btn btn-success btn-sm account_button"><small>RESET</small></button></a></p>
+                    <p>Don't have an account?&nbsp;&nbsp;
+                    <a href="{% url 'signup_init' %}"> <button type="button" class="btn btn-success btn-sm account_button"><small>SIGN UP</small></button></a></p>
+                </div>
+            </div>
+        {% endif %}
+    </main>
+{% endblock %}

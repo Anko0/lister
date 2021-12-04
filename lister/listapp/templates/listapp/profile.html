@@ -1,0 +1,21 @@
+{% extends 'listapp/base.html' %}
+
+{% block title %}Lister - Profile{% endblock %}
+{% block content %}
+{% load static %}
+    <main>
+        <div class="main">
+            <div class="headof">Account details</div>
+            <div class="textof">
+                </br><strong>Your username: </strong>
+                {{ username }}
+                </br><strong>Your email: </strong>
+                {{ email }}
+                </br></br>
+                <p><strong>You can </strong></p>
+                <a href="{% url 'change_password' %}"><button type="button" class="btn btn-success btn-sm account1_button"><small>CHANGE PASSWORD</small></button></a>&nbsp;&nbsp;
+                <a href="/accounts/logout/"><button type="button" class="btn btn-success btn-sm account_button"><small> LOG OUT </small></button></a></br></br>
+            </div>
+        </div>
+    </main>
+{% endblock %}

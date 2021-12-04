@@ -1,0 +1,93 @@
+{% extends 'listapp/base.html' %}
+
+{% block title %}Lister - About{% endblock %}
+{% block content %}
+{% load static %}
+    <main>
+        <div class="main">
+            <div class="headof">About</div>
+            <div>
+                <div class="textof"></br>
+                    <strong>This website is designed to create shopping lists.</strong></br>
+                    You can create purchases in different categories and indicate the planned time of purchase.</br>
+                    And using one joint account for the whole family will allow you to manage purchases together and not worry that something will be forgotten.
+                </div>
+                {% if user.is_authenticated %}
+                    <div class="textof"></br>
+                        <strong>Your statistic:</strong>
+                        <div class="card-group">
+                            <div class="card text-white bg-success mb-2 text-center " style="max-width: 15%;">
+                                <div class="card-header">Today purchases</div>
+                                <div class="card-body">
+                                    <h5 class="card-title"><strong>{{ items_statistic.items_today_count }}</strong></h5>
+                                </div>
+                                <a href="/sort/today/" class="btn btn-success btn-sm text-white"><small>GO TO THEM</small></a>
+                            </div>
+                            <div class="card text-white bg-success mb-2 text-center " style="max-width: 15%;">
+                                <div class="card-header">Active purchases</div>
+                                <div class="card-body">
+                                    <h5 class="card-title"><strong>{{ items_statistic.items_active_count }}</strong></h5>
+                                </div>
+                                <a href="/sort/all/" class="btn btn-success btn-sm text-white"><small>GO TO THEM</small></a>
+                            </div>
+                            <div class="card text-white bg-success mb-2 text-center " style="max-width: 15%;">
+                                <div class="card-header">Executed purchases</div>
+                                <div class="card-body">
+                                    <h5 class="card-title"><strong>{{ items_statistic.items_executed_count }}</strong></h5>
+                                </div>
+                                <a href="/sort/done/" class="btn btn-success btn-sm text-white"><small>GO TO THEM</small></a>
+                            </div>
+                            <div class="card text-white bg-success mb-2 text-center " style="max-width: 15%;">
+                                <div class="card-header">Not executed purchases</div>
+                                <div class="card-body">
+                                    <h5 class="card-title"><strong>{{ items_statistic.items_nexecuted_count }}</strong></h5>
+                                </div>
+                                <a href="/" class="btn btn-success btn-sm text-white"><small>GO TO THEM</small></a>
+                            </div>
+                            <div class="card text-white bg-success mb-2 text-center" style="max-width: 40%;">
+                                <div class="card-header">Most popular groups</div>
+                                <div class="card-body">
+                                    <h5 class="card-title"><strong>{% for types in items_statistic.items_popular_types %}{{ types }}</br>{% endfor %}</strong></h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card text-white bg-success mb-2">
+                            <div class="card-header text-center">List of today purchases</div>
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    <table cellpadding="5" class="table table-sm table-hover text-white">
+                                        <thead>
+                                            <tr>
+                                                <th class="w-5"> </th>
+                                                <th class="w-12">Name </th>
+                                                <th class="w-12">Need before </th>
+                                                <th class="w-7">Count </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for item in items_statistic.items_today %}
+                                            <tr>
+                                                <td class="text-white"> {{ forloop.counter }} </td>
+                                                <td class="text-white"> {{ item.item_name }} </td>
+                                                <td class="text-white"> {{ item.item_executed }} </td>
+                                                <td class="text-white"> {{ item.item_count }}  {{ item.item_counttype }} </td>
+                                                </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </h5>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+            </br>
+            <div class="textof">
+                <strong>Contacts and copyrights:</strong>
+                </br>Telegram: @Anko0
+                </br>© 2020 Anko0
+                </br></br>Images: Pixabay
+            </div>
+        </div>
+    </main>
+{% endblock %}

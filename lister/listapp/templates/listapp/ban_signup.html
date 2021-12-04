@@ -1,0 +1,20 @@
+{% extends 'listapp/base.html' %}
+
+{% block title %}Lister - Not Found{% endblock %}
+{% block content %}
+{% load static %}
+    <main>
+        <div class="main">
+            {% if user.is_authenticated %}
+                <div class="textof"><strong>You are authenticated yet!</strong></div>
+            {% else %}
+                <div class="headof">
+                    <strong>It seems you are trying to crack a sign up form!</strong></br>
+                </div>
+                <div class="textof">
+                    You can try to sign up once every 15 minutes and enter the correct code in 5 attempts
+                </div>
+            {% endif %}
+        </div>
+    </main>
+{% endblock %}
